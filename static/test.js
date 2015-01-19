@@ -4,6 +4,10 @@ window.onload = function ()
 {
     sock = io();
 
+    sock.on("connect", function () {
+	sock.emit("lobby", "test");
+    });
+
     sock.on("msg", function (msg) { console.log(msg); });
 
     sock.on("error", function (errMsg) {
