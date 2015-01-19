@@ -26,7 +26,7 @@ and a function to create a room for that game.
 >     , newGame :: [Player]   -- ^ A list of players in the game.
 >               -> Object     -- ^ JSON object with game options.
 >               -> Event Move -- ^ Event stream of moves made.
->               -> GameRoom
+>               -> Reactive GameRoom
 >       -- TODO: Implement a better game options system.
 >       -- TODO: Handle dropping players.
 >     }
