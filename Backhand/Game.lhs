@@ -44,14 +44,10 @@ game lobby.
 > -- room or lobby.
 > data GameRoom = GameRoom
 >     {
->     -- | @True@ if players should be allowed to join the given game in its
->     -- current state.
->       bJoinAllowed :: Behavior Bool
->
 >     -- | If applicable, this will be a behavior which contains the player ID
 >     -- of the player whose turn it is.
->     , bCurrentTurn :: Behavior (Maybe MemberId) 
->
+>       bCurrentTurn :: Behavior (Maybe MemberId)
+> 
 >     -- | Event which should fire to send some data to a player.
 >     -- The second element of the tuple is a list of player IDs to send the
 >     -- data to. If it is empty, the data is sent to all players.
