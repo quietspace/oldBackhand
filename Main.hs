@@ -2,6 +2,7 @@
 module Main where
 
 
+import           FRP.Sodium
 import           Network.EngineIO.Snap
 import           Network.SocketIO
 
@@ -9,11 +10,19 @@ import           Snap
 import           Snap.Util.FileServe
 
 import           Backhand.Connection
+import           Backhand.Core
 import           Backhand.Game
+
+testGame :: Game
+testGame =
+    Game { gameName = "Test Game"
+         , newGame = undefined
+         }
 
 main :: IO ()
 main = do
-    sockHandler <- initialize snapAPI connSockRoutes
+    core <- sync $ mkCore testGame never
+    sockHandler <- initialize snapAPI $ connSockRoutes core
     quickHttpServe $ site sockHandler
 
 

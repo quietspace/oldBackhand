@@ -5,6 +5,12 @@ window.onload = function ()
     sock = io();
 
     sock.on("msg", function (msg) { console.log(msg); });
+
+    sock.on("error", function (errMsg) {
+	console.log("Error: " + errMsg);
+	alert("Error: " + errMsg);
+	sock.disconnect();
+    });
 };
 
 function doSend()
